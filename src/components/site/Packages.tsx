@@ -146,7 +146,7 @@ function TripBuilder() {
   const [who, setWho] = useState("Solo");
   const [pace, setPace] = useState("Balanced");
 
-  const suggestion = packages.find((p) => p.days === days) ?? packages[0];
+  const suggestion = packages.find((p) => p.days === days) ?? packages[0]!;
   const itinerary = useMemo(
     () =>
       Array.from({ length: days }, (_, i) => {
@@ -254,13 +254,13 @@ function TripBuilder() {
 
 export function Packages() {
   const active = packages.filter((p) => p.active);
-  const [selectedId, setSelectedId] = useState(active[2]?.id ?? active[0].id);
+  const [selectedId, setSelectedId] = useState(active[2]?.id ?? active[0]!.id);
   const [compare, setCompare] = useState(false);
   const [step, setStep] = useState(0);
   const [date, setDate] = useState("");
   const [guests, setGuests] = useState("2");
 
-  const pkg = active.find((p) => p.id === selectedId) ?? active[0];
+  const pkg = active.find((p) => p.id === selectedId) ?? active[0]!;
 
   const bookMessage = whatsappLink(
     `Hi Dreamyard Udaipur, I'd like to book the ${pkg.title} package (${pkg.subtitle}).${
